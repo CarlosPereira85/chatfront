@@ -30,7 +30,7 @@ const Text =  () => {
       </div>
     <Container >
       <Segment >
-        <h1>Elon Musk</h1>
+        <h1>AI</h1>
     
       <textarea  className="textAreaStyle" value={response} onChange={(e)=>{setText(e.target.value)}}>   </textarea>
        
