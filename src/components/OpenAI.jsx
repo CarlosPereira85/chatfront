@@ -3,6 +3,7 @@ import { useSpeechRecognition } from 'react-speech-recognition'
 import MyContext from '../context/MyContext';
 import React, { useContext } from 'react';
 import { Circles } from  'react-loader-spinner'
+import SendIcon from '@mui/icons-material/Send';
 
 
 
@@ -79,7 +80,7 @@ textalign="center"
         >
           
         </input>
-    <button className='ask' type="submit"><span style={{color:"black"}}>ASK ME</span></button>
+    <button className='ask' type="submit"><span style={{color:"black" ,fontSize:'15px', fontWeight:"bold" }}>< SendIcon/></span></button>
       </form>
     </div>
     )}
