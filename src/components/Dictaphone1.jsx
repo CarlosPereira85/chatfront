@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import SpeechRecognition, { useSpeechRecognition } from 'react-speech-recognition';
+import MicOffIcon from '@mui/icons-material/MicOff';
+import CampaignIcon from '@mui/icons-material/Campaign';
 
 const Dictaphone1 = () => {
  const [message, setMessage] = useState('');
@@ -51,10 +53,10 @@ const Dictaphone1 = () => {
        <span className='listen'>
          
          {' '}
-         {listening ? <div style={{color:"green"}}> ON</div>  : <div style={{color:"red" , fontWeight:'bold'}}> OFF <span></span></div>}
+         {listening ? <div style={{color:"green"}}> <CampaignIcon/> </div>  : <div style={{color:"red" , fontWeight:'bold'}}> <MicOffIcon/> <span></span></div>}
       
         
-         <button onTouchEnd={SpeechRecognition.stopListening} type="button" onClick={listenContinuously}>TURN ON</button>
+         <button className='micro' onTouchEnd={SpeechRecognition.stopListening} type="button" onClick={listenContinuously}></button>
        </span>
        <div>
       

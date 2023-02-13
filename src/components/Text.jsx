@@ -10,6 +10,7 @@ import { useSpeechRecognition } from "react-speech-recognition";
 
 
 
+
 const Text =  () => {
   const { transcript, message } = useSpeechRecognition ();
   
@@ -18,9 +19,11 @@ const Text =  () => {
 
   return (
     <>
+    <h1 style={{textAlign:"center"}}>Listening & Speaking ChatGPT</h1>
     <div className="box">
+      
    <div className="me">
-    <h1>Ask me anything!</h1>
+    
    <h1>Me</h1>
    <div className="me_box" >
    

@@ -14,6 +14,7 @@ const MyProvider = ({ children }) => {
   const [response, setResponse] = useState('')
   const ref = useRef(null);;
   const [timeLeft, setTimeLeft] = useState(null);
+  const [loading, setLoading] = useState(false);
   
     useEffect(() => {
         const timeoutId = setTimeout(() =>{ handleOnClick()}, 1000);
@@ -74,12 +75,14 @@ const MyProvider = ({ children }) => {
 
   
 
+
  
+
  const handleSubmit = async (e) => {
     
-   
+  
 
-      
+  setLoading(true);
   
       e.preventDefault()
       setMessage("")
@@ -96,6 +99,7 @@ const MyProvider = ({ children }) => {
      
       .then(res => res.json())
       .then(data => {
+        setLoading(false);
         setResponse(data.message)
       })
       console.log(response)
@@ -116,6 +120,7 @@ const MyProvider = ({ children }) => {
              listenContinuously,
               handleSubmit,
               response,
+              loading
             
 
 

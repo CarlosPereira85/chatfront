@@ -2,13 +2,15 @@ import { useState, useRef } from 'react'
 import { useSpeechRecognition } from 'react-speech-recognition'
 import MyContext from '../context/MyContext';
 import React, { useContext } from 'react';
+import { Circles } from  'react-loader-spinner'
+
 
 
 
 // creating an instance of the OpenAI API
 function OpenAI() {
 
-const {response, handleSubmit} = useContext (MyContext)
+const {response, handleSubmit, loading} = useContext (MyContext)
   
   const { finalTranscript, } = useSpeechRecognition ();
 
@@ -45,6 +47,23 @@ console.log('trying',tifOptions)
 
   return (
     <div>
+      <div>
+{loading ? (
+  <div className='loader'>
+<Circles 
+textalign="center"
+  height="30"
+  width="30"
+  color="#4fa94d"
+  ariaLabel="circles-loading"
+  wrapperStyle={{}}
+  wrapperClass=""
+  visible={true}
+  
+/>
+</div>
+     
+    ) : (
       
     <div className="App">
       <form onSubmit={handleSubmit}>
@@ -60,18 +79,19 @@ console.log('trying',tifOptions)
         >
           
         </input>
-    <button className='ask' type="submit">ASK</button>
+    <button className='ask' type="submit"><span style={{color:"black"}}>ASK ME</span></button>
       </form>
     </div>
-    <div>
-      
+    )}
     
-    
-    </div>
+   
     
     </div>
-  ) 
+    </div>
+  )
 }
+    
+
 
 export default OpenAI
     
