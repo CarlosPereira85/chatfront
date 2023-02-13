@@ -23,6 +23,9 @@ const Home = () => {
   <OpenAI />
         <Text />
        <Dictaphone1 />
+       <div style={{textAlign:"center"}}>
+        Created by <a href="https://www.linkedin.com/in/carlos-pereira-0b847b235/">Carlos Pereira</a>
+       </div>
       </div>
 <div>
 
