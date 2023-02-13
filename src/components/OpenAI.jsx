@@ -55,7 +55,7 @@ console.log('trying',tifOptions)
 textalign="center"
   height="30"
   width="30"
-  color="#4fa94d"
+  color=" #a1a1ff"
   ariaLabel="circles-loading"
   wrapperStyle={{}}
   wrapperClass=""
@@ -81,6 +81,7 @@ textalign="center"
           
         </input>
     <button className='ask' type="submit"><span style={{color:"black" ,fontSize:'15px', fontWeight:"bold" }}>< SendIcon/></span></button>
+    
       </form>
     </div>
     )}

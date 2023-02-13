@@ -19,12 +19,12 @@ const Text =  () => {
 
   return (
     <>
-    <h1 style={{textAlign:"center"}}>Listening & Speaking ChatGPT</h1>
+    <h1 style={{textAlign:"center"}}>Speaking & Listening ChatGPT</h1>
     <div className="box">
       
    <div className="me">
     
-   <h1>Me</h1>
+   <h1>YOU</h1>
    <div className="me_box" >
    
       {transcript}

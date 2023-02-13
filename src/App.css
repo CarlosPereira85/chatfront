@@ -54,7 +54,7 @@ body {
   .ask {
     position: absolute;
     left: 48%;
-    bottom: 65%;
+    bottom: 75%;
     width: 60px;
     height: 60px;
    
@@ -70,7 +70,7 @@ body {
 
   .on-off {
     position: absolute;
-    left: 42%;
+    left: 46%;
     top: 19%;
     cursor: pointer;
   }
@@ -104,6 +104,15 @@ body {
  
 
   @media screen and (max-width: 500px) {
+    .loader {
+      position: absolute;
+      left: 20%;
+      top: 35%;
+   
+     
+    }
+  }
+  @media screen and (max-width: 500px) {
     .textAreaStyle {
      width: 300px;
      margin-left: 15%;
@@ -136,7 +145,7 @@ body {
   @media screen and (max-width: 800px) {
     .on-off {
      position: absolute;
-      left: 33%;
+      left: 32%;
       top: 23.3%;
     }
   }
