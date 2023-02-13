@@ -86,7 +86,7 @@ const MyProvider = ({ children }) => {
       
    
       
-      const response = await fetch('https://gptback.onrender.com/', {
+      const response = await fetch('https://gptback.onrender.com', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
