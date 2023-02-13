@@ -60,10 +60,14 @@ console.log('trying',tifOptions)
         >
           
         </input>
-    <button className='ask' type="submit">ASK.</button>
+    <button className='ask' type="submit">ASK</button>
       </form>
     </div>
-   
+    <div>
+      
+    
+    
+    </div>
     
     </div>
   ) 

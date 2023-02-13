@@ -20,6 +20,7 @@ const Text =  () => {
     <>
     <div className="box">
    <div className="me">
+    <h1>Ask me anything!</h1>
    <h1>Me</h1>
    <div className="me_box" >
    

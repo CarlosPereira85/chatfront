@@ -53,3 +53,23 @@
     top: 19%;
   }
 
+  @media screen and (max-width: 800px) {
+    .box {
+     display: flex;
+      flex-direction: column;
+    }
+  }
+  @media screen and (max-width: 800px) {
+    .ask {
+     position: absolute;
+      left: 70%;
+      bottom: 80%;
+    }
+  }
+  @media screen and (max-width: 800px) {
+    .on-off {
+     position: absolute;
+      left: 43%;
+      top: 13.3%;
+    }
+  }
