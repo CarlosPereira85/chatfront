@@ -103,14 +103,49 @@ body {
       
     
   }
+  .reset {
+    background-color: black;
+    color: #a1a1ff;
+    border-radius: 11px;
+    padding: 3px;
+  }
  
  
 
-  @media screen and (max-width: 500px) {
+  @media screen and (max-width: 500px ) {
     .loader {
       position: absolute;
-      left: 20%;
+      left: 50%;
       top: 35%;
+   
+     
+    }
+    
+  }
+  @media screen and (max-width: 400px ) {
+    .loader {
+      position: absolute;
+      left: 50%;
+      top: 35%;
+   
+     
+    }
+    
+  }
+  @media screen and (max-width: 500px) {
+    .reset {
+      position: absolute;
+      left: 100px;
+      top: 35%;
+   
+     
+    }
+  }
+  @media screen and (max-width: 400px) {
+    .reset {
+      position: absolute;
+      left: 100px;
+     
    
      
     }
@@ -119,6 +154,14 @@ body {
     .textAreaStyle {
      width: 300px;
      margin-left: 15%;
+   
+     
+    }
+  }
+  @media screen and (max-width: 400px) {
+    .textAreaStyle {
+     width: 300px;
+    
    
      
     }
@@ -146,6 +189,14 @@ body {
       bottom: 69%;
     }
   }
+  @media screen and (max-width: 400px) {
+    .ask {
+     position: absolute;
+      left: 50%;
+      bottom: 59%;
+    }
+  }
+  
   @media screen and (max-width: 800px) {
     .on-off {
      position: absolute;
@@ -153,4 +204,10 @@ body {
       top: 23.3%;
     }
   }
-
+  @media screen and (max-width: 400px) {
+    .on-off {
+     position: absolute;
+      left: 32%;
+      top: 30.5%;
+    }
+  }

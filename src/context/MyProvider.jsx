@@ -95,6 +95,7 @@ const MyProvider = ({ children }) => {
   
       e.preventDefault()
       setMessage("")
+     
       
    
       
@@ -112,6 +113,7 @@ const MyProvider = ({ children }) => {
         setResponse(data.message)
       })
       console.log(response)
+     
     }
     
      

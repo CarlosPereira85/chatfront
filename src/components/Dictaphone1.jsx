@@ -65,7 +65,7 @@ const Dictaphone1 = () => {
          {listening ? <div style={{color:"green"}}> <CampaignIcon/> </div>  : <div style={{color:"red" , fontWeight:'bold'}}> <MicOffIcon/> <span></span></div>}
       
         
-         <button className='micro' onTouchEnd={SpeechRecognition.stopListening} type="button" onClick={listenContinuously}> <span>Turn</span> </button>
+         <button className='micro' onTouchEnd={SpeechRecognition.stopListening} type="button" onClick={listenContinuously}>  </button>
        </span>
        <div>
       

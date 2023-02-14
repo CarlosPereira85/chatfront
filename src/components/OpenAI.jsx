@@ -80,7 +80,7 @@ textalign="center"
         >
           
         </input>
-    <button className='ask' type="submit"><span style={{color:"black" ,fontSize:'15px', fontWeight:"bold" }}>< SendIcon/></span></button>
+    <button  className='ask' type="submit"><span style={{color:"black" ,fontSize:'15px', fontWeight:"bold" }}>< SendIcon/></span></button>
     
       </form>
     </div>

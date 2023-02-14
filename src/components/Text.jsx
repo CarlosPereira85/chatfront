@@ -28,7 +28,7 @@ const Text =  () => {
     <Language  />
     </div>
       <div style={{textAlign:"center", position:'absolute', top:'30%' ,left:'48%'}}>
-      <button onClick={refreshPage}>Reset</button>
+      <button className="reset" onClick={refreshPage}>Reset</button>
       </div>
     <div className="box">
       
