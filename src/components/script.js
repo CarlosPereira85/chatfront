@@ -1,124 +1,142 @@
-import bot from './assets/bot.svg'
-import user from './assets/user.svg'
+import React, { useState, useEffect } from 'react';
+
+import axios from 'axios';
 
 
+const URL = "https://game-of-thrones-quotes.herokuapp.com/v1/random/10";
 
+export default function App() {
+    const [inputText, setInputText] = useState('');
+    const [resultText, setResultText] = useState('');
 
-const form = document.querySelector('form')
-const chatContainer = document.querySelector('#chat_container')
+    const [resultTextQ, setResultTextQ] = useState('');
+    const [selectedLanguageKey, setLanguageKey] = useState('')
+    const [languagesList, setLanguagesList] = useState([])
+    
+    const [detectLanguageKey, setdetectedLanguageKey] = useState('')
+    const [dataT, setDataT] = useState([]);
 
-let loadInterval
+  const apiGet = () => {
+    fetch(URL)
+      .then((response) => response.json())
+      .then((dataT) => {
+        setDataT(dataT);
+        console.log(dataT);
+      });
+  };
+  useEffect(() => {
+    apiGet();
+  }, []);
+    const getLanguageSource = () => {
+        axios.post(`https://libretranslate.de/detect`, {
+            q: inputText, dataT
+           
+        })
+        .then((response) => {
+            setdetectedLanguageKey(response.data[0].language)
+        })
+    }
+    const translateText = () => {
+        setResultText(inputText)
+       
+       
 
-function loader(element) {
-    element.textContent = ''
+        getLanguageSource();
 
-    loadInterval = setInterval(() => {
-        // Update the text content of the loading indicator
-        element.textContent += '.';
-
-        // If the loading indicator has reached three dots, reset it
-        if (element.textContent === '....') {
-            element.textContent = '';
+        let data = {
+            q : inputText,
+            source: detectLanguageKey,
+            target: selectedLanguageKey
         }
-    }, 300);
-}
+        axios.post(`https://libretranslate.de/translate`, data)
+        .then((response) => {
+            setResultText(response.data.translatedText)
+        })
+    }
+    const translateTextQ = () => {
+       
+        setResultText(dataT)
+       
 
+        getLanguageSource();
 
-function typeText(element, text) {
-    let index = 0
-
-    let interval = setInterval(() => {
-        if (index < text.length) {
-            element.innerHTML += text.charAt(index)
-            index++
-        } else {
-            clearInterval(interval)
+        let data = {
+            q : dataT,
+            source: detectLanguageKey,
+            target: selectedLanguageKey
         }
-    }, 20)
-}
+        axios.post(`https://libretranslate.de/translate`, data)
+        .then((response) => {
+            setResultText(response.data.translatedTextQ)
+        })
+    }
 
-// generate unique ID for each message div of bot
-// necessary for typing text effect for that specific reply
-// without unique ID, typing text will work on every element
-function generateUniqueId() {
-    const timestamp = Date.now();
-    const randomNumber = Math.random();
-    const hexadecimalString = randomNumber.toString(16);
+    const languageKey = (selectedLanguage) => {
+        setLanguageKey(selectedLanguage.target.value)
+    }
 
-    return `id-${timestamp}-${hexadecimalString}`;
-}
+    useEffect(() => {
+       axios.get(`https://libretranslate.de/languages`)
+       .then((response) => {
+        setLanguagesList(response.data)
+       })
 
-function chatStripe(isAi, value, uniqueId) {
-    return (
-        `
-        <div class="wrapper ${isAi && 'ai'}">
-            <div class="chat">
-                <div class="profile">
-                    <img 
-                      src=${isAi ? bot : user} 
-                      alt="${isAi ? 'bot' : 'user'}" 
-                    />
-                </div>
-                <div class="message" id=${uniqueId}>${value}</div>
+       getLanguageSource()
+    }, [inputText])
+    return ( <>
+        <div>
+            <div className="app-header">
+                <h2 className="header"> Translator</h2>
             </div>
+
+            <div className='app-body'>
+                <div>
+                   <form>
+                     
+                        <form
+                            
+                            placeholder='Type Text to Translate..'
+                            onChange={(e) => setInputText(e.target.value)}
+                        />
+
+                        <select className="language-select" onChange={languageKey}>
+                            <option>Please Select Language..</option>
+                            {languagesList.map((language) => {
+                                return (
+                                    <option value={language.code}>
+                                        {language.name}
+                                    </option>
+                                )
+                            })}
+                        </select>
+
+                       <form 
+                            inputMode='text'
+                            placeholder='Your Result Translation..'
+                            value={resultText}
+                        />
+                        <button onClick={translateText} name='translate'>Translate</button>
+                        
+                            </form>
+                </div>
+            </div>
+            
         </div>
-    `
+        <div>
+        <ul>
+          <h1>Game Of Thrones</h1>
+          {dataT.length > 0 && dataT.map((item) => <li>{item.sentence}</li>)}
+        </ul>
+        
+      </div>
+      <div>
+        <button onClick={apiGet}>Fetch API</button>
+        <button onClick={translateTextQ}>Translate</button>
+        <p>
+            
+        </p>
+      </div>
+      <div></div>
+        </>
     )
 }
-
-const handleSubmit = async (e) => {
-    e.preventDefault()
-
-    const data = new FormData(form)
-
-    // user's chatstripe
-    chatContainer.innerHTML += chatStripe(false, data.get('prompt'))
-
-    // to clear the textarea input 
-    form.reset()
-
-    // bot's chatstripe
-    const uniqueId = generateUniqueId()
-    chatContainer.innerHTML += chatStripe(true, " ", uniqueId)
-
-    // to focus scroll to the bottom 
-    chatContainer.scrollTop = chatContainer.scrollHeight;
-
-    // specific message div 
-    const messageDiv = document.getElementById(uniqueId)
-
-    // messageDiv.innerHTML = "..."
-    loader(messageDiv)
-
-    const response = await fetch('http://localhost:5000/', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-            prompt: data.get('prompt')
-        })
-    })
-
-    clearInterval(loadInterval)
-    messageDiv.innerHTML = " "
-
-    if (response.ok) {
-        const data = await response.json();
-        const parsedData = data.bot.trim() // trims any trailing spaces/'\n' 
-
-        typeText(messageDiv, parsedData)
-    } else {
-        const err = await response.text()
-
-        messageDiv.innerHTML = "Something went wrong"
-        alert(err)
-    }
-}
-
-form.addEventListener('submit', handleSubmit)
-form.addEventListener('keyup', (e) => {
-    if (e.keyCode === 13) {
-        handleSubmit(e)
-    }
-})

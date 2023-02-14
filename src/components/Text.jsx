@@ -5,6 +5,7 @@ import MyContext from "../context/MyContext";
 import React, { useContext } from "react";
 import Dictaphone1 from "./Dictaphone1";
 import { useSpeechRecognition } from "react-speech-recognition";
+import Language from "./Language";
 
 
 
@@ -20,6 +21,9 @@ const Text =  () => {
   return (
     <>
     <h1 style={{textAlign:"center"}}>Speaking & Listening ChatGPT</h1>
+    <div style={{textAlign:"center"}}>
+    <Language  />
+    </div>
     <div className="box">
       
    <div className="me">

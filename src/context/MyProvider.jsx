@@ -1,7 +1,7 @@
 import MyContext from "./MyContext";
 import React, { useState, useEffect, useRef } from 'react';
 import { useSpeechSynthesis } from 'react-speech-kit';
-
+import data from '../data/data.js'
 
 import SpeechRecognition, { useSpeechRecognition } from 'react-speech-recognition';
 
@@ -15,7 +15,15 @@ const MyProvider = ({ children }) => {
   const ref = useRef(null);;
   const [timeLeft, setTimeLeft] = useState(null);
   const [loading, setLoading] = useState(false);
-  
+  const [dataLanguage, setDataLanguage] = useState([])
+    const [language, setLanguage] = useState('en-US')
+
+
+    useEffect(() => {
+        setDataLanguage(data)
+        console.log(data)
+    }, [])
+
     useEffect(() => {
         const timeoutId = setTimeout(() =>{ handleOnClick()}, 1000);
         return () => clearTimeout(timeoutId);
@@ -66,10 +74,11 @@ const MyProvider = ({ children }) => {
    console.log('Your browser does not support speech recognition software! Try Chrome desktop, maybe?');
  }
  const listenContinuously = () => {
+  
    SpeechRecognition.startListening({
   
      continuous: true,
-     language: 'en-GB',
+     
    });
  };
 
@@ -120,7 +129,11 @@ const MyProvider = ({ children }) => {
              listenContinuously,
               handleSubmit,
               response,
-              loading
+              loading,
+              dataLanguage,
+              language,
+              setLanguage
+
             
 
 

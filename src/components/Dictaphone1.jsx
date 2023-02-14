@@ -2,9 +2,15 @@ import React, { useEffect, useState } from 'react';
 import SpeechRecognition, { useSpeechRecognition } from 'react-speech-recognition';
 import MicOffIcon from '@mui/icons-material/MicOff';
 import CampaignIcon from '@mui/icons-material/Campaign';
+import { useContext } from 'react';
+import MyContext from '../context/MyContext';
 
 const Dictaphone1 = () => {
- const [message, setMessage] = useState('');
+  const [message, setMessage] = useState('');
+  
+  const {language} = useContext (MyContext)
+
+
  const commands = [
    {
      command: 'reset',
@@ -39,12 +45,15 @@ const Dictaphone1 = () => {
  if (!SpeechRecognition.browserSupportsSpeechRecognition()) {
    console.log('Your browser does not support speech recognition software! Try Chrome desktop, maybe?');
  }
+
  const listenContinuously = () => {
   
    SpeechRecognition.startListening({
   
      continuous: false,
-     language: 'en-GB',
+     language: `${language}`,
+    
+
    });
  };
  return (
