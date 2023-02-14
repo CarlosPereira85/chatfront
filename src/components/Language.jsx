@@ -9,7 +9,7 @@ import MyContext from '../context/MyContext'
 
 const Language = () => {
 
-    const { dataLanguage, setDataLanguage, setLanguageTras, languageTras } = useContext(MyContext)
+    const { dataLanguage, setDataLanguage, setLanguage, language } = useContext(MyContext)
    
     
     
@@ -21,7 +21,7 @@ const Language = () => {
 
 
   return (<>
-    <select className="language-select" onChange={(e) => setLanguageTras(e.target.value)}  >
+    <select className="language-select" onChange={(e) => setLanguage(e.target.value)}  >
                             <option>Please Select Language..</option>
                             {data.map((idioma) => {
                                 return (

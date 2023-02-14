@@ -1,7 +1,7 @@
 import MyContext from "./MyContext";
 import React, { useState, useEffect, useRef } from 'react';
 import { useSpeechSynthesis } from 'react-speech-kit';
-import data from '../data/data.js'
+import data from './data.data.js'
 
 import SpeechRecognition, { useSpeechRecognition } from 'react-speech-recognition';
 
@@ -15,9 +15,8 @@ const MyProvider = ({ children }) => {
   const ref = useRef(null);;
   const [timeLeft, setTimeLeft] = useState(null);
   const [loading, setLoading] = useState(false);
-
   const [dataLanguage, setDataLanguage] = useState([])
-    const [languageTras, setLanguageTras] = useState('en-US')
+    const [language, setLanguage] = useState('en-US')
 
 
     useEffect(() => {
@@ -132,9 +131,9 @@ const MyProvider = ({ children }) => {
               response,
               loading,
               dataLanguage,
-              languageTras,
-              setLanguageTras
-
+              language,
+              setLanguage
+              
             
 
 
