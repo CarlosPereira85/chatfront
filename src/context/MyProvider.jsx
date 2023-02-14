@@ -15,8 +15,9 @@ const MyProvider = ({ children }) => {
   const ref = useRef(null);;
   const [timeLeft, setTimeLeft] = useState(null);
   const [loading, setLoading] = useState(false);
+
   const [dataLanguage, setDataLanguage] = useState([])
-    const [language, setLanguage] = useState('en-US')
+    const [languageTras, setLanguageTras] = useState('en-US')
 
 
     useEffect(() => {
@@ -131,8 +132,8 @@ const MyProvider = ({ children }) => {
               response,
               loading,
               dataLanguage,
-              language,
-              setLanguage
+              languageTras,
+              setLanguageTras
 
             
 

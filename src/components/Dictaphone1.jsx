@@ -8,7 +8,7 @@ import MyContext from '../context/MyContext';
 const Dictaphone1 = () => {
   const [message, setMessage] = useState('');
   
-  const {language} = useContext (MyContext)
+  const {languageTras} = useContext (MyContext)
 
 
  const commands = [
@@ -51,7 +51,7 @@ const Dictaphone1 = () => {
    SpeechRecognition.startListening({
   
      continuous: false,
-     language: `${language}`,
+     language: `${languageTras}`,
     
 
    });
