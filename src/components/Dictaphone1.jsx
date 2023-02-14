@@ -8,7 +8,7 @@ import MyContext from '../context/MyContext';
 const Dictaphone1 = () => {
   const [message, setMessage] = useState('');
   
- 
+  const {language} = useContext (MyContext)
 
 
  const commands = [

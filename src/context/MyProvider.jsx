@@ -1,7 +1,7 @@
 import MyContext from "./MyContext";
 import React, { useState, useEffect, useRef } from 'react';
 import { useSpeechSynthesis } from 'react-speech-kit';
-import data from './data.data.js'
+import data from '../data/data.js'
 
 import SpeechRecognition, { useSpeechRecognition } from 'react-speech-recognition';
 

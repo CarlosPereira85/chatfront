@@ -17,6 +17,9 @@ const Text =  () => {
   
   const {setText, response} = useContext (MyContext)
   
+  const refreshPage = () => {
+    window.location.reload(false);
+  }
 
   return (
     <>
@@ -24,6 +27,9 @@ const Text =  () => {
     <div style={{textAlign:"center"}}>
     <Language  />
     </div>
+      <div style={{textAlign:"center", position:'absolute', top:'30%' ,left:'48%'}}>
+      <button onClick={refreshPage}>Reset</button>
+      </div>
     <div className="box">
       
    <div className="me">
