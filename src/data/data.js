@@ -1,14 +1,9 @@
 var  data = [
    
-    {
-        "code": "pt-PT",
-        "name": "Português (Portugal)"
-    }
 
-,
-    {
+ {
         "code": "pt-BR",
-        "name": "Português (Brazil)"
+        "name": "Portuguese "
     }
 
 ,
@@ -16,11 +11,7 @@ var  data = [
         "code": "es-ES",
         "name": "Spanish"
     }
-    ,
-    {
-        "code": "en-US",
-        "name": "English"
-    }
+  
     ,
     {
         "code": "fr-FR",

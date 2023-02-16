@@ -77,7 +77,9 @@ const MyProvider = ({ children }) => {
   
    SpeechRecognition.startListening({
   
-     continuous: true,
+    continuous: false,
+     language: `${language}`,
+    
      
    });
  };
@@ -115,6 +117,9 @@ const MyProvider = ({ children }) => {
       console.log(response)
      
     }
+     const refreshPage = () => {
+    window.location.reload(false);
+  }
     
      
 
@@ -134,7 +139,8 @@ const MyProvider = ({ children }) => {
               loading,
               dataLanguage,
               language,
-              setLanguage
+              setLanguage,
+              refreshPage
               
             
 
